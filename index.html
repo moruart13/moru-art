@@ -12,6 +12,13 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+<div class="lightbox" id="lightbox">
+
+    <span id="close">&times;</span>
+
+    <img id="lightbox-img">
+
+</div>
 
 <body>
 
@@ -20,16 +27,15 @@
             <h2 class="logo">Moru Art</h2>
 
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
         </nav>
     </header>
 
-    <section class="hero">
-
+    <section class="hero" id="home">
         <div class="left">
 
 <span class="tag">
@@ -58,8 +64,104 @@ Each artwork is handcrafted with passion.
         </div>
 
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id="portfolio">
+        <section class="about" id="about">
+
+    <div class="about-image">
+        <img src="images/profile.png" alt="Maulana Yusup">
+    </div>
+
+    <div class="about-content">
+
+        <span class="section-tag">About Me</span>
+
+        <h2>Passionate Traditional Artist.</h2>
+
+        <p>
+            Hi, I'm <strong>Maulana Yusup</strong>, a traditional artist from Indonesia.
+            I specialize in realistic pencil drawings, anime illustrations,
+            and custom portrait commissions.
+        </p>
+
+        <p>
+            Every artwork is handcrafted with patience and attention to detail,
+            ensuring every piece feels unique and meaningful.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>100+</h3>
+                <span>Drawings</span>
+            </div>
+
+            <div class="stat">
+                <h3>50+</h3>
+                <span>Clients</span>
+            </div>
+
+            <div class="stat">
+                <h3>5★</h3>
+                <span>Rating</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
         <section class="about">
+            <section class="commission" id="commission">
+
+    <span class="section-tag">Commission</span>
+
+    <h2>Choose Your Artwork</h2>
+
+    <p class="subtitle">
+        Select the drawing style that fits your needs.
+    </p>
+
+    <div class="pricing">
+
+        <div class="price-card">
+
+            <h3>✏️ Sketch</h3>
+
+            <h1>Rp150K</h1>
+
+            <p>Simple pencil sketch</p>
+
+            <button>Order Now</button>
+
+        </div>
+
+        <div class="price-card featured">
+
+            <h3>🎨 Anime</h3>
+
+            <h1>Rp300K</h1>
+
+            <p>Detailed anime illustration</p>
+
+            <button>Order Now</button>
+
+        </div>
+
+        <div class="price-card">
+
+            <h3>👤 Portrait</h3>
+
+            <h1>Rp500K</h1>
+
+            <p>Realistic portrait drawing</p>
+
+            <button>Order Now</button>
+
+        </div>
+
+    </div>
+
+</section>
 
     <div class="about-image">
 
@@ -122,3 +224,12 @@ Each artwork is handcrafted with passion.
 
 </body>
 </html>
+<footer>
+
+    <h2>Moru Art</h2>
+
+    <p>
+        © 2026 All Rights Reserved.
+    </p>
+
+</footer>
