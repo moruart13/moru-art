@@ -63,3 +63,24 @@ window.addEventListener("scroll", () => {
     }
 
 });
+// Fade-in body saat halaman dibuka
+window.addEventListener("load", () => {
+    document.body.style.opacity = "1";
+});
+
+// Scroll animation
+const hiddenElements = document.querySelectorAll(".hidden");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+
+    });
+});
+
+hiddenElements.forEach((el)=>{
+    observer.observe(el);
+});
