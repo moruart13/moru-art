@@ -1401,3 +1401,49 @@ height:300px;
     translateY(0);
 
 }
+/* =====================
+   TIKTOK SECTION
+===================== */
+
+
+.tiktok{
+
+    text-align:center;
+
+    padding:100px 8%;
+
+}
+
+
+.tiktok h2{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+}
+
+
+.tiktok p{
+
+    color:#aaa;
+
+    margin-bottom:40px;
+
+}
+
+
+.tiktok-card{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+
+.tiktok-embed{
+
+    border-radius:20px;
+
+}
