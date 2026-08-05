@@ -675,3 +675,43 @@ color:#38bdf8;
     }
 
 }
+/* CONTACT */
+
+.contact{
+    padding:120px 25px;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:48px;
+    margin:20px 0;
+}
+
+.contact-text{
+    max-width:650px;
+    margin:0 auto 50px;
+    color:#94a3b8;
+    line-height:1.8;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.contact-buttons a{
+    background:#38bdf8;
+    color:white;
+    text-decoration:none;
+    padding:16px 32px;
+    border-radius:999px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.contact-buttons a:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(56,189,248,.35);
+}
