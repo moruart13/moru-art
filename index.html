@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,228 +9,211 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
-<div class="lightbox" id="lightbox">
-
-    <span id="close">&times;</span>
-
-    <img id="lightbox-img">
-
-</div>
 
 <body>
 
+    <!-- Navbar -->
     <header>
+
         <nav>
+
             <h2 class="logo">Moru Art</h2>
 
             <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-</ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#commission">Order</a></li>
+            </ul>
+
         </nav>
+
     </header>
 
+    <!-- Hero -->
+     <section class="numbers">
+
+
+
+</section>
     <section class="hero" id="home">
+
         <div class="left">
 
-<span class="tag">
-🎨 Traditional Artist
-</span>
+            <span class="tag">🎨 Traditional Artist</span>
 
-<h1>
-Turning Ideas Into
-<span>Realistic Art.</span>
-</h1>
+            <h1>
+                Turning Ideas Into
+                <span>Realistic Art.</span>
+            </h1>
 
-<p>
-I create realistic pencil drawings, anime illustrations,
-and custom portraits with attention to every detail.
-Each artwork is handcrafted with passion.
-</p>
+            <p>
+                I create realistic pencil drawings, anime illustrations,
+                and custom portraits with attention to every detail.
+            </p>
 
-<div class="buttons">
-                <button>View Portfolio</button>
-                <button class="secondary">Commission Me</button>
+            <div class="buttons">
+
+                <button onclick="location.href='#portfolio'">
+    View Portfolio
+</button>
+                <button class="secondary"
+onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+    Commission Me
+</button>
             </div>
+
         </div>
 
         <div class="right">
+
             <img src="images/profile.png" alt="Artist">
+
         </div>
 
     </section>
-    <section class="portfolio" id="portfolio">
-        <section class="about" id="about">
 
-    <div class="about-image">
-        <img src="images/profile.png" alt="Maulana Yusup">
-    </div>
+    <!-- About -->
 
-    <div class="about-content">
+    <section class="about" id="about">
 
-        <span class="section-tag">About Me</span>
+        <div class="about-image">
 
-        <h2>Passionate Traditional Artist.</h2>
-
-        <p>
-            Hi, I'm <strong>Maulana Yusup</strong>, a traditional artist from Indonesia.
-            I specialize in realistic pencil drawings, anime illustrations,
-            and custom portrait commissions.
-        </p>
-
-        <p>
-            Every artwork is handcrafted with patience and attention to detail,
-            ensuring every piece feels unique and meaningful.
-        </p>
-
-        <div class="stats">
-
-            <div class="stat">
-                <h3>100+</h3>
-                <span>Drawings</span>
-            </div>
-
-            <div class="stat">
-                <h3>50+</h3>
-                <span>Clients</span>
-            </div>
-
-            <div class="stat">
-                <h3>5★</h3>
-                <span>Rating</span>
-            </div>
+            <img src="images/Maulana Yusup.png" alt="Maulana">
 
         </div>
 
-    </div>
+        <div class="about-content">
 
-</section>
-        <section class="about">
-            <section class="commission" id="commission">
+            <span class="section-tag">About Me</span>
 
-    <span class="section-tag">Commission</span>
+            <h2>Passionate Traditional Artist.</h2>
 
-    <h2>Choose Your Artwork</h2>
+            <p>
+                Hi, I'm <strong>Maulana Yusup</strong>, a traditional artist from Indonesia.
+            </p>
 
-    <p class="subtitle">
-        Select the drawing style that fits your needs.
-    </p>
-
-    <div class="pricing">
-
-        <div class="price-card">
-
-            <h3>✏️ Sketch</h3>
-
-            <h1>Rp150K</h1>
-
-            <p>Simple pencil sketch</p>
-
-            <button>Order Now</button>
+            <p>
+                I specialize in realistic pencil drawings, anime illustrations,
+                and custom portrait commissions.
+            </p>
 
         </div>
 
-        <div class="price-card featured">
+    </section>
 
-            <h3>🎨 Anime</h3>
+    <!-- Portfolio -->
 
-            <h1>Rp300K</h1>
+    <!-- Portfolio -->
 
-            <p>Detailed anime illustration</p>
-
-            <button>Order Now</button>
-
-        </div>
-
-        <div class="price-card">
-
-            <h3>👤 Portrait</h3>
-
-            <h1>Rp500K</h1>
-
-            <p>Realistic portrait drawing</p>
-
-            <button>Order Now</button>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <div class="about-image">
-
-        <img src="images/profile.png" alt="">
-
-    </div>
-
-    <div class="about-text">
-
-        <h2>About Me</h2>
-
-        <p>
-            Hi! I'm Maulana Yusup, a traditional artist from Indonesia.
-            I specialize in realistic pencil drawings, anime illustrations,
-            and custom portrait commissions.
-        </p>
-
-        <p>
-            Every artwork is handcrafted with patience, precision,
-            and attention to detail.
-        </p>
-
-    </div>
-
-</section>
+<section class="portfolio" id="portfolio">
 
     <h2>Featured Works</h2>
 
+    <p class="gallery-sub">
+        Selected artworks created with precision and passion.
+    </p>
+
     <div class="gallery">
 
-        <div class="card">
-            <img src="images/art1.jpg" alt="">
-            <div class="overlay">
-                <h3>Gojo Satoru</h3>
-                <p>Anime Art</p>
+    <div class="card">
+        <img src="images/Edsa.png" onclick="openImage(this.src)">
+        <div class="overlay">
+            <h3>Portrait</h3>
+            <p>Realistic Pencil Drawing</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/Yuji.png" onclick="openImage(this.src)">
+        <div class="overlay">
+            <h3>Anime</h3>
+            <p>Detailed Illustration</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/Mas.png" onclick="openImage(this.src)">
+        <div class="overlay">
+            <h3>Commission</h3>
+            <p>Custom Artwork</p>
+        </div>
+    </div>
+
+</div>
+</section>
+
+    <!-- Commission -->
+
+    <section class="commission" id="commission">
+
+        <span class="section-tag">Commission</span>
+
+        <h2>Choose Your Artwork</h2>
+
+        <div class="pricing">
+
+            <div class="price-card">
+
+                <h3>Sketch</h3>
+
+                <h1>Rp150K</h1>
+
+                <button>Order</button>
+
             </div>
+
+            <div class="price-card featured">
+
+                <h3>Anime</h3>
+
+                <h1>Rp300K</h1>
+
+                <button>Order</button>
+
+            </div>
+
+            <div class="price-card">
+
+                <h3>Portrait</h3>
+
+                <h1>Rp500K</h1>
+
+                <button>Order</button>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <img src="images/art2.jpg" alt="">
-            <div class="overlay">
-                <h3>Nico Robin</h3>
-                <p>Portrait</p>
-            </div>
-        </div>
+    </section>
 
-        <div class="card">
-            <img src="images/art3.jpg" alt="">
-            <div class="overlay">
-                <h3>Levi Ackerman</h3>
-                <p>Pencil Drawing</p>
-            </div>
-        </div>
+    <!-- Lightbox -->
+
+    <div class="lightbox" id="lightbox">
+
+        <span id="close">&times;</span>
+
+        <img id="lightbox-img">
 
     </div>
 
-</section>
+    <!-- Footer -->
+
+    <footer>
+
+        <h2>Moru Art</h2>
+
+        <p>© 2026 All Rights Reserved.</p>
+
+    </footer>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
-<footer>
-
-    <h2>Moru Art</h2>
-
-    <p>
-        © 2026 All Rights Reserved.
-    </p>
-
-</footer>
