@@ -1,86 +1,92 @@
 console.log("Website berhasil dibuat 🚀");
-window.addEventListener("load",()=>{
 
-document.body.style.opacity="1";
+// ======================
+// PAGE LOAD
+// ======================
 
+window.addEventListener("load", () => {
+    document.body.style.opacity = "1";
+    document.body.style.overflow = "auto";
 });
+
+// ======================
+// LIGHTBOX
+// ======================
+
 const cards = document.querySelectorAll(".card img");
-
 const lightbox = document.getElementById("lightbox");
-
 const lightboxImg = document.getElementById("lightbox-img");
-
 const closeBtn = document.getElementById("close");
 
-cards.forEach(card=>{
+cards.forEach(card => {
 
-card.onclick=()=>{
+    card.addEventListener("click", () => {
 
-lightbox.style.display="flex";
+        lightbox.style.display = "flex";
+        lightboxImg.src = card.src;
 
-lightboxImg.src=card.src;
+    });
 
-}
-
-})
-
-closeBtn.onclick=()=>{
-
-lightbox.style.display="none";
-
-}
-
-lightbox.onclick=(e)=>{
-
-if(e.target===lightbox){
-
-lightbox.style.display="none";
-
-}
-
-}
-window.addEventListener("scroll", () => {
-    const nav = document.querySelector("nav");
-
-    if (window.scrollY > 80) {
-        nav.classList.add("scrolled");
-    } else {
-        nav.classList.remove("scrolled");
-    }
 });
+
+closeBtn.addEventListener("click", () => {
+
+    lightbox.style.display = "none";
+
+});
+
+lightbox.addEventListener("click", (e) => {
+
+    if (e.target === lightbox) {
+
+        lightbox.style.display = "none";
+
+    }
+
+});
+
+// ======================
+// NAVBAR SCROLL
+// ======================
+
 const nav = document.querySelector("nav");
 
 window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 80){
+    if (window.scrollY > 80) {
 
         nav.classList.add("scrolled");
 
-    }else{
+    } else {
 
         nav.classList.remove("scrolled");
 
     }
 
 });
-// Fade-in body saat halaman dibuka
-window.addEventListener("load", () => {
-    document.body.style.opacity = "1";
-});
 
-// Scroll animation
+// ======================
+// SCROLL ANIMATION
+// ======================
+
 const hiddenElements = document.querySelectorAll(".hidden");
 
 const observer = new IntersectionObserver((entries) => {
+
     entries.forEach((entry) => {
 
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
+
             entry.target.classList.add("show");
+
         }
 
     });
+
 });
 
-hiddenElements.forEach((el)=>{
+hiddenElements.forEach((el) => {
+
     observer.observe(el);
+
 });
