@@ -42,9 +42,9 @@
 
 
 </section>
-    <section class="hero" id="home">
+    <section class="hero hero-reveal" id="home">
 
-        <div class="left">
+       <div class="left hero-text">
 
             <span class="tag">🎨 Traditional Artist</span>
 
@@ -71,7 +71,7 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
 
         </div>
 
-        <div class="right">
+       <div class="right hero-image">
 
             <img src="images/profile.png" alt="Artist">
 
@@ -121,7 +121,7 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
 
     <div class="gallery">
 
-    <div class="card">
+    <div class="card hidden">
         <img src="images/Edsa.png" onclick="openImage(this.src)">
         <div class="overlay">
             <h3>Portrait</h3>
@@ -129,7 +129,7 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
         </div>
     </div>
 
-    <div class="card">
+    <div class="card hidden">
         <img src="images/Yuji.png" onclick="openImage(this.src)">
         <div class="overlay">
             <h3>Anime</h3>
@@ -137,7 +137,7 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
         </div>
     </div>
 
-    <div class="card">
+    <div class="card hidden">
         <img src="images/Mas.png" onclick="openImage(this.src)">
         <div class="overlay">
             <h3>Commission</h3>
@@ -164,7 +164,9 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
 
                 <h1>Rp150K</h1>
 
-                <button>Order</button>
+               <button onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+Order
+</button>
 
             </div>
 
@@ -174,7 +176,9 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
 
                 <h1>Rp300K</h1>
 
-                <button>Order</button>
+                <button onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+Order
+</button>
 
             </div>
 
@@ -184,7 +188,9 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
 
                 <h1>Rp500K</h1>
 
-                <button>Order</button>
+                <button onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+Order
+</button>
 
             </div>
 
@@ -242,7 +248,34 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
     <p>© 2026 All Rights Reserved.</p>
 
 </footer>
+
 <script src="script.js"></script>
 </body>
+
+<div class="intro">
+
+    <div class="intro-content">
+
+        <svg class="draw-logo" viewBox="0 0 600 150">
+
+            <text x="50%" 
+            y="50%" 
+            text-anchor="middle">
+                Moru Art
+            </text>
+
+        </svg>
+
+
+        <p id="typing"></p>
+
+
+    </div>
+
+</div>
+
+
+<!-- Navbar -->
+<header>
 
 </html>

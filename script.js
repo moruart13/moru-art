@@ -1,3 +1,26 @@
+// Typing intro
+
+const text = "Traditional Artist";
+
+let i = 0;
+
+
+function typing(){
+
+    if(i < text.length){
+
+        document.getElementById("typing").innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,120);
+
+    }
+
+}
+
+
+setTimeout(typing,1500);
 console.log("Website berhasil dibuat 🚀");
 
 // ======================
@@ -68,6 +91,7 @@ window.addEventListener("scroll", () => {
 // ======================
 // SCROLL ANIMATION
 // ======================
+console.log("Scroll animation aktif");
 
 const hiddenElements = document.querySelectorAll(".hidden");
 
