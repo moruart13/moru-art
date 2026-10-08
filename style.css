@@ -755,3 +755,4 @@ footer p{ color:var(--text-muted); }
         transition-delay:0s !important;
     }
 }
+   .logo img{ height:40px; display:block; }
