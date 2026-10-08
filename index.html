@@ -10,6 +10,8 @@
     <!-- Tandai JS aktif (supaya animasi nggak bikin konten hilang kalau JS gagal) -->
     <script>document.documentElement.classList.add('js');</script>
 
+    <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -17,28 +19,58 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
 </head>
 
 <body>
 
-    <!-- Intro -->
-    <div class="intro" aria-hidden="true">
+    <!-- Intro: latar -->
+    <div class="intro" aria-hidden="true"></div>
 
-        <div class="intro-content">
+    <!-- Intro: logo (digambar, lalu terbang & nempel ke navbar) -->
+    <div class="stage" aria-hidden="true">
 
-            <svg class="draw-logo" viewBox="0 0 600 150">
+        <div class="stage-inner">
 
+            <svg class="intro-logo" viewBox="0 0 399 112" xmlns="http://www.w3.org/2000/svg" focusable="false">
                 <defs>
-                    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#ddd6fe" />
-                        <stop offset="55%" stop-color="#a78bfa" />
-                        <stop offset="100%" stop-color="#8b5cf6" />
+                    <linearGradient id="ml-bg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#8b5cf6"/>
+                        <stop offset="1" stop-color="#4c1d95"/>
                     </linearGradient>
+                    <linearGradient id="ml-line" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0" stop-color="#e879f9" stop-opacity="0"/>
+                        <stop offset="0.35" stop-color="#e879f9"/>
+                        <stop offset="1" stop-color="#ddd6fe"/>
+                    </linearGradient>
+                    <radialGradient id="ml-shine" cx="0.25" cy="0.15" r="0.8">
+                        <stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>
+                        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+                    </radialGradient>
                 </defs>
 
-                <text x="50%" y="50%" text-anchor="middle">Moru Art</text>
+                <!-- Tulisan: digambar dulu -->
+                <g transform="translate(118 76.9)">
+                    <path class="tx tx-moru" pathLength="1" d="M49.706 -40.716V0.0H39.788000000000004V-24.418000000000003L30.682000000000002 0.0H22.678L13.514000000000001 -24.476000000000003V0.0H3.596V-40.716H15.312000000000001L26.738000000000003 -12.528L38.048 -40.716Z M56.368 -16.182000000000002Q56.368 -21.17 58.572 -24.969Q60.775999999999996 -28.768 64.604 -30.798000000000002Q68.432 -32.828 73.188 -32.828Q77.944 -32.828 81.77199999999999 -30.798000000000002Q85.6 -28.768 87.804 -24.969Q90.00800000000001 -21.17 90.00800000000001 -16.182000000000002Q90.00800000000001 -11.194 87.775 -7.3950000000000005Q85.542 -3.596 81.685 -1.566Q77.828 0.464 73.072 0.464Q68.316 0.464 64.517 -1.566Q60.718 -3.596 58.543000000000006 -7.3660000000000005Q56.368 -11.136000000000001 56.368 -16.182000000000002ZM79.916 -16.182000000000002Q79.916 -20.068 77.973 -22.156Q76.03 -24.244 73.188 -24.244Q70.288 -24.244 68.374 -22.185000000000002Q66.46000000000001 -20.126 66.46000000000001 -16.182000000000002Q66.46000000000001 -12.296000000000001 68.345 -10.208000000000002Q70.23 -8.120000000000001 73.072 -8.120000000000001Q75.914 -8.120000000000001 77.91499999999999 -10.208000000000002Q79.916 -12.296000000000001 79.916 -16.182000000000002Z M116.854 -32.712V-22.214000000000002H114.128Q110.416 -22.214000000000002 108.56 -20.619Q106.704 -19.024 106.704 -15.022V0.0H96.786V-32.364000000000004H106.704V-26.970000000000002Q108.444 -29.638 111.054 -31.175000000000004Q113.664 -32.712 116.854 -32.712Z M155.06799999999998 -32.364000000000004V0.0H145.15V-4.408Q143.642 -2.262 141.06099999999998 -0.957Q138.48 0.34800000000000003 135.34799999999998 0.34800000000000003Q131.636 0.34800000000000003 128.79399999999998 -1.3050000000000002Q125.952 -2.958 124.386 -6.090000000000001Q122.82 -9.222000000000001 122.82 -13.456000000000001V-32.364000000000004H132.68V-14.790000000000001Q132.68 -11.542 134.362 -9.744Q136.04399999999998 -7.946000000000001 138.886 -7.946000000000001Q141.786 -7.946000000000001 143.46800000000002 -9.744Q145.15 -11.542 145.15 -14.790000000000001V-32.364000000000004Z"/>
+                    <g transform="translate(174.8 0)">
+                        <path class="tx tx-art" pathLength="1" d="M28.942 -7.192H13.746L11.31 0.0H0.928L15.66 -40.716H27.144000000000002L41.876000000000005 0.0H31.378ZM26.39 -14.848 21.344 -29.754 16.356 -14.848Z M67.91 -32.712V-22.214000000000002H65.184Q61.47200000000001 -22.214000000000002 59.61600000000001 -20.619Q57.760000000000005 -19.024 57.760000000000005 -15.022V0.0H47.842V-32.364000000000004H57.760000000000005V-26.970000000000002Q59.5 -29.638 62.11 -31.175000000000004Q64.72 -32.712 67.91 -32.712Z M92.20400000000001 -8.41V0.0H87.15800000000002Q81.76400000000001 0.0 78.74800000000002 -2.6390000000000002Q75.73200000000001 -5.2780000000000005 75.73200000000001 -11.252V-24.128H71.78800000000001V-32.364000000000004H75.73200000000001V-40.252H85.65V-32.364000000000004H92.14600000000002V-24.128H85.65V-11.136000000000001Q85.65 -9.686 86.346 -9.048Q87.042 -8.41 88.66600000000001 -8.41Z"/>
+                    </g>
+                </g>
 
+                <!-- Logo: muncul setelah tulisan selesai -->
+                <g transform="translate(0 8) scale(0.8)">
+                    <g class="m-tile">
+                        <rect x="4" y="4" width="112" height="112" rx="30" fill="url(#ml-bg)"/>
+                        <rect x="4" y="4" width="112" height="112" rx="30" fill="url(#ml-shine)"/>
+                    </g>
+                    <path class="m-m" pathLength="1" d="M33 80 V36 L60 62 L87 36 V58"
+                          fill="none" stroke="#f5f3ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g class="m-tip">
+                        <path d="M81.5 58 H92.5 L87 82 Z" fill="#ddd6fe"/>
+                        <path d="M84.6 74 H89.4 L87 82 Z" fill="#2e1065"/>
+                    </g>
+                    <path class="m-line" pathLength="1" d="M87 82.5 C76 92 58 88 40 92 C34 93.5 29 93 24 91"
+                          fill="none" stroke="url(#ml-line)" stroke-width="3.2" stroke-linecap="round"/>
+                </g>
             </svg>
 
             <p id="typing"></p>
@@ -54,7 +86,7 @@
 
         <nav>
 
-               <a class="logo" href="#home"><img src="images/moru-logo.svg" alt="Moru Art"></a>
+            <a class="logo" href="#home"><img src="images/moru-logo.svg" alt="Moru Art" width="399" height="112"></a>
 
             <ul>
                 <li><a href="#home">Home</a></li>

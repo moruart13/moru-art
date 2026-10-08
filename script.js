@@ -1,13 +1,20 @@
 // ======================
 // INTRO SEQUENCE
-// logo digambar -> ketik tagline -> tirai terangkat -> hero muncul
+// tulisan digambar -> logo muncul -> logo terbang & nempel ke navbar
 // ======================
 
 const root = document.documentElement;
 const intro = document.querySelector(".intro");
+const stage = document.querySelector(".stage");
+const flyer = document.querySelector(".intro-logo");
+const navLogo = document.querySelector(".logo img");
 const typingEl = document.getElementById("typing");
 const introText = "Traditional Artist";
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// selalu mulai dari paling atas biar posisi navbar bisa diukur dengan benar
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+window.scrollTo(0, 0);
 
 let timers = [];
 let finished = false;
@@ -27,47 +34,79 @@ function typeText() {
     })();
 }
 
-function endIntro() {
+// logo intro sudah "mendarat" -> tampilkan logo asli di navbar
+function dock() {
+    root.classList.add("docked");
+    if (stage) stage.remove();
+}
+
+function endIntro(skipped) {
     if (finished) return;
     finished = true;
 
     timers.forEach(clearTimeout);
     timers = [];
 
-    if (!intro) {
-        root.classList.add("ready");
-        return;
-    }
-
     typingEl.textContent = introText;
-    intro.classList.add("exit");
+    if (skipped === true) stage.classList.add("complete");
+    stage.classList.add("leaving");
 
-    // hero mulai muncul saat tirai sedang naik
-    setTimeout(() => root.classList.add("ready"), reduceMotion ? 0 : 350);
+    // ukur posisi awal (tengah layar) & tujuan (logo navbar)
+    // PENTING: diukur sebelum class "ready" supaya navbar belum bergerak
+    const from = flyer.getBoundingClientRect();
+    const to = navLogo ? navLogo.getBoundingClientRect() : null;
+
+    intro.classList.add("exit");                       // tirai turun
+    setTimeout(() => root.classList.add("ready"), 150); // navbar + hero muncul
     setTimeout(() => intro.remove(), 1300);
+
+    if (flyer.animate && to && to.width > 0 && from.width > 0) {
+
+        const dx = to.left - from.left;
+        const dy = to.top - from.top;
+        const scale = to.width / from.width;
+
+        const flight = flyer.animate(
+            [
+                { transform: "translate(0px, 0px) scale(1)" },
+                { transform: `translate(${dx}px, ${dy}px) scale(${scale})` }
+            ],
+            { duration: 1000, easing: "cubic-bezier(.65,0,.35,1)", fill: "forwards" }
+        );
+
+        flight.onfinish = dock;
+        setTimeout(dock, 1500); // jaga-jaga
+
+    } else {
+        setTimeout(dock, 600);
+    }
 }
 
-if (!intro || reduceMotion) {
+if (!intro || !stage || reduceMotion) {
     if (intro) intro.remove();
-    root.classList.add("ready");
+    if (stage) stage.remove();
+    root.classList.add("ready", "docked");
 } else {
     const fontsReady = document.fonts && document.fonts.ready
         ? document.fonts.ready
         : Promise.resolve();
 
-    // tunggu font Poppins siap (maks 1.2 detik) biar logo nggak "loncat"
+    // tunggu font (untuk tagline) maks 1.2 detik
     Promise.race([
         fontsReady,
         new Promise(resolve => setTimeout(resolve, 1200))
     ]).then(() => {
         if (finished) return;
-        intro.classList.add("play");
-        later(typeText, 1300);
-        later(endIntro, 3400);
+        stage.classList.add("play");
+        later(typeText, 1400);
+        later(endIntro, 3200);
     });
 
     // klik di mana aja untuk skip intro
-    intro.addEventListener("click", endIntro);
+    intro.addEventListener("click", () => endIntro(true));
+
+    // pengaman: kalau ada yang gagal, web tetap kebuka
+    setTimeout(() => root.classList.add("ready", "docked"), 9000);
 }
 
 // ======================
