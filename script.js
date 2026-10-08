@@ -1,71 +1,103 @@
-// Typing intro
+// ======================
+// INTRO SEQUENCE
+// logo digambar -> ketik tagline -> tirai terangkat -> hero muncul
+// ======================
 
-const text = "Traditional Artist";
+const root = document.documentElement;
+const intro = document.querySelector(".intro");
+const typingEl = document.getElementById("typing");
+const introText = "Traditional Artist";
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-let i = 0;
+let timers = [];
+let finished = false;
 
-
-function typing(){
-
-    if(i < text.length){
-
-        document.getElementById("typing").innerHTML += text.charAt(i);
-
-        i++;
-
-        setTimeout(typing,120);
-
-    }
-
+function later(fn, ms) {
+    timers.push(setTimeout(fn, ms));
 }
 
+function typeText() {
+    let i = 0;
+    (function step() {
+        if (i <= introText.length) {
+            typingEl.textContent = introText.slice(0, i);
+            i++;
+            later(step, 70);
+        }
+    })();
+}
 
-setTimeout(typing,1500);
-console.log("Website berhasil dibuat 🚀");
+function endIntro() {
+    if (finished) return;
+    finished = true;
 
-// ======================
-// PAGE LOAD
-// ======================
+    timers.forEach(clearTimeout);
+    timers = [];
 
-window.addEventListener("load", () => {
-    document.body.style.opacity = "1";
-    document.body.style.overflow = "auto";
-});
+    if (!intro) {
+        root.classList.add("ready");
+        return;
+    }
+
+    typingEl.textContent = introText;
+    intro.classList.add("exit");
+
+    // hero mulai muncul saat tirai sedang naik
+    setTimeout(() => root.classList.add("ready"), reduceMotion ? 0 : 350);
+    setTimeout(() => intro.remove(), 1300);
+}
+
+if (!intro || reduceMotion) {
+    if (intro) intro.remove();
+    root.classList.add("ready");
+} else {
+    const fontsReady = document.fonts && document.fonts.ready
+        ? document.fonts.ready
+        : Promise.resolve();
+
+    // tunggu font Poppins siap (maks 1.2 detik) biar logo nggak "loncat"
+    Promise.race([
+        fontsReady,
+        new Promise(resolve => setTimeout(resolve, 1200))
+    ]).then(() => {
+        if (finished) return;
+        intro.classList.add("play");
+        later(typeText, 1300);
+        later(endIntro, 3400);
+    });
+
+    // klik di mana aja untuk skip intro
+    intro.addEventListener("click", endIntro);
+}
 
 // ======================
 // LIGHTBOX
 // ======================
 
-const cards = document.querySelectorAll(".card img");
+const cardImages = document.querySelectorAll(".card img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeBtn = document.getElementById("close");
 
-cards.forEach(card => {
+function closeLightbox() {
+    lightbox.classList.remove("open");
+}
 
-    card.addEventListener("click", () => {
-
-        lightbox.style.display = "flex";
-        lightboxImg.src = card.src;
-
+cardImages.forEach(img => {
+    img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add("open");
     });
-
 });
 
-closeBtn.addEventListener("click", () => {
-
-    lightbox.style.display = "none";
-
-});
+closeBtn.addEventListener("click", closeLightbox);
 
 lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
 
-    if (e.target === lightbox) {
-
-        lightbox.style.display = "none";
-
-    }
-
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
 });
 
 // ======================
@@ -75,23 +107,12 @@ lightbox.addEventListener("click", (e) => {
 const nav = document.querySelector("nav");
 
 window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 80) {
-
-        nav.classList.add("scrolled");
-
-    } else {
-
-        nav.classList.remove("scrolled");
-
-    }
-
-});
+    nav.classList.toggle("scrolled", window.scrollY > 80);
+}, { passive: true });
 
 // ======================
-// SCROLL ANIMATION
+// SCROLL REVEAL
 // ======================
-console.log("Scroll animation aktif");
 
 const hiddenElements = document.querySelectorAll(".hidden");
 
@@ -99,18 +120,21 @@ const observer = new IntersectionObserver((entries) => {
 
     entries.forEach((entry) => {
 
-        if (entry.isIntersecting) {
+        if (!entry.isIntersecting) return;
 
-            entry.target.classList.add("show");
+        const el = entry.target;
 
+        // kartu portfolio muncul berurutan
+        if (el.classList.contains("card")) {
+            const index = [...el.parentElement.children].indexOf(el);
+            el.style.animationDelay = (index * 0.12) + "s";
         }
+
+        el.classList.add("show");
+        observer.unobserve(el);
 
     });
 
-});
+}, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
 
-hiddenElements.forEach((el) => {
-
-    observer.observe(el);
-
-});
+hiddenElements.forEach((el) => observer.observe(el));

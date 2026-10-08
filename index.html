@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#14082e">
     <title>Moru Art</title>
+
+    <!-- Tandai JS aktif (supaya animasi nggak bikin konten hilang kalau JS gagal) -->
+    <script>document.documentElement.classList.add('js');</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +20,33 @@
 </head>
 
 <body>
+
+    <!-- Intro -->
+    <div class="intro" aria-hidden="true">
+
+        <div class="intro-content">
+
+            <svg class="draw-logo" viewBox="0 0 600 150">
+
+                <defs>
+                    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ddd6fe" />
+                        <stop offset="55%" stop-color="#a78bfa" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                </defs>
+
+                <text x="50%" y="50%" text-anchor="middle">Moru Art</text>
+
+            </svg>
+
+            <p id="typing"></p>
+
+            <div class="intro-bar"><i></i></div>
+
+        </div>
+
+    </div>
 
     <!-- Navbar -->
     <header>
@@ -37,14 +68,9 @@
     </header>
 
     <!-- Hero -->
-     <section class="numbers">
+    <section class="hero" id="home">
 
-
-
-</section>
-    <section class="hero hero-reveal" id="home">
-
-       <div class="left hero-text">
+        <div class="left">
 
             <span class="tag">🎨 Traditional Artist</span>
 
@@ -61,17 +87,19 @@
             <div class="buttons">
 
                 <button onclick="location.href='#portfolio'">
-    View Portfolio
-</button>
+                    View Portfolio
+                </button>
+
                 <button class="secondary"
-onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-    Commission Me
-</button>
+                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+                    Commission Me
+                </button>
+
             </div>
 
         </div>
 
-       <div class="right hero-image">
+        <div class="right">
 
             <img src="images/profile.png" alt="Artist">
 
@@ -80,8 +108,7 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
     </section>
 
     <!-- About -->
-
-<section class="about hidden" id="about">
+    <section class="about hidden" id="about">
 
         <div class="about-image">
 
@@ -109,50 +136,45 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
     </section>
 
     <!-- Portfolio -->
+    <section class="portfolio hidden" id="portfolio">
 
-    <!-- Portfolio -->
+        <h2>Featured Works</h2>
 
-<section class="portfolio hidden" id="portfolio">
-    <h2>Featured Works</h2>
+        <p class="gallery-sub">
+            Selected artworks created with precision and passion.
+        </p>
 
-    <p class="gallery-sub">
-        Selected artworks created with precision and passion.
-    </p>
+        <div class="gallery">
 
-    <div class="gallery">
+            <div class="card hidden">
+                <img src="images/Edsa.png" alt="Realistic pencil portrait">
+                <div class="overlay">
+                    <h3>Portrait</h3>
+                    <p>Realistic Pencil Drawing</p>
+                </div>
+            </div>
 
-    <div class="card hidden">
-        <img src="images/Edsa.png" onclick="openImage(this.src)">
-        <div class="overlay">
-            <h3>Portrait</h3>
-            <p>Realistic Pencil Drawing</p>
+            <div class="card hidden">
+                <img src="images/Yuji.png" alt="Detailed anime illustration">
+                <div class="overlay">
+                    <h3>Anime</h3>
+                    <p>Detailed Illustration</p>
+                </div>
+            </div>
+
+            <div class="card hidden">
+                <img src="images/Mas.png" alt="Custom commission artwork">
+                <div class="overlay">
+                    <h3>Commission</h3>
+                    <p>Custom Artwork</p>
+                </div>
+            </div>
+
         </div>
-    </div>
 
-    <div class="card hidden">
-        <img src="images/Yuji.png" onclick="openImage(this.src)">
-        <div class="overlay">
-            <h3>Anime</h3>
-            <p>Detailed Illustration</p>
-        </div>
-    </div>
-
-    <div class="card hidden">
-        <img src="images/Mas.png" onclick="openImage(this.src)">
-        <div class="overlay">
-            <h3>Commission</h3>
-            <p>Custom Artwork</p>
-        </div>
-    </div>
-
-</div>
-</section>
-<!-- TikTok -->
-
-
+    </section>
 
     <!-- Commission -->
-
     <section class="commission hidden" id="commission">
 
         <span class="section-tag">Commission</span>
@@ -167,9 +189,10 @@ onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20wa
 
                 <h1>Rp150K</h1>
 
-               <button onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-Order
-</button>
+                <button
+                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+                    Order
+                </button>
 
             </div>
 
@@ -179,9 +202,10 @@ Order
 
                 <h1>Rp300K</h1>
 
-                <button onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-Order
-</button>
+                <button
+                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+                    Order
+                </button>
 
             </div>
 
@@ -191,9 +215,10 @@ Order
 
                 <h1>Rp500K</h1>
 
-                <button onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-Order
-</button>
+                <button
+                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
+                    Order
+                </button>
 
             </div>
 
@@ -202,87 +227,58 @@ Order
     </section>
 
     <!-- Lightbox -->
-
     <div class="lightbox" id="lightbox">
 
-        <span id="close">&times;</span>
+        <span id="close" aria-label="Close">&times;</span>
 
-        <img id="lightbox-img">
+        <img id="lightbox-img" alt="">
 
     </div>
 
     <!-- Contact -->
+    <section class="contact hidden" id="contact">
 
-<section class="contact hidden" id="contact">
+        <span class="section-tag">Contact</span>
 
-    <span class="section-tag">Contact</span>
+        <h2>Let's Work Together</h2>
 
-    <h2>Let's Work Together</h2>
+        <p class="contact-text">
+            Interested in a custom artwork?
+            Feel free to contact me through one of the platforms below.
+        </p>
 
-    <p class="contact-text">
-        Interested in a custom artwork?
-        Feel free to contact me through one of the platforms below.
-    </p>
+        <div class="contact-buttons">
 
-    <div class="contact-buttons">
+            <a href="https://wa.me/6281210663582" target="_blank" rel="noopener">
+                WhatsApp
+            </a>
 
-        <a href="https://wa.me/6281210663582" target="_blank">
-            WhatsApp
-        </a>
+            <a href="https://instagram.com/moruu_04" target="_blank" rel="noopener">
+                Instagram
+            </a>
 
-        <a href="https://instagram.com/moruu_04" target="_blank">
-            Instagram
-        </a>
-        <a href="https://tiktok.com/@imoru4" target="_blank">
-    TikTok
-</a>
+            <a href="https://tiktok.com/@imoru4" target="_blank" rel="noopener">
+                TikTok
+            </a>
 
-        <a href="mailto:maulanayusup914@email.com">
-            Email
-        </a>
+            <a href="mailto:maulanayusup914@email.com">
+                Email
+            </a>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
-<!-- Footer -->
+    <!-- Footer -->
+    <footer>
 
-<footer>
+        <h2>Moru Art</h2>
 
-    <h2>Moru Art</h2>
+        <p>© 2026 All Rights Reserved.</p>
 
-    <p>© 2026 All Rights Reserved.</p>
+    </footer>
 
-</footer>
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
-<div class="intro">
-
-    <div class="intro-content">
-
-        <svg class="draw-logo" viewBox="0 0 600 150">
-
-            <text x="50%" 
-            y="50%" 
-            text-anchor="middle">
-                Moru Art
-            </text>
-
-        </svg>
-
-
-        <p id="typing"></p>
-
-
-    </div>
-
-</div>
-
-
-<!-- Navbar -->
-<header>
 
 </html>
