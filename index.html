@@ -214,48 +214,32 @@
 
         <h2>Choose Your Artwork</h2>
 
-        <div class="pricing">
+        <p class="commission-sub">
+            Pick a style and paper size, then choose the pose you want.
+            Prices are shown in Rupiah and US Dollars.
+        </p>
 
-            <div class="price-card">
+        <div class="c-controls">
 
-                <h3>Sketch</h3>
-
-                <h1>Rp150K</h1>
-
-                <button
-                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-                    Order
-                </button>
-
+            <div class="seg" id="seg-style" role="group" aria-label="Art style">
+                <span class="seg-ind"></span>
+                <button type="button" data-value="anime" class="active">Anime</button>
+                <button type="button" data-value="realistic">Realistic</button>
             </div>
 
-            <div class="price-card featured">
-
-                <h3>Anime</h3>
-
-                <h1>Rp300K</h1>
-
-                <button
-                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-                    Order
-                </button>
-
-            </div>
-
-            <div class="price-card">
-
-                <h3>Portrait</h3>
-
-                <h1>Rp500K</h1>
-
-                <button
-                    onclick="window.open('https://wa.me/6281210663582?text=Hi%20Moru%20Art,%20I%20want%20to%20order%20a%20drawing!')">
-                    Order
-                </button>
-
+            <div class="seg" id="seg-size" role="group" aria-label="Paper size">
+                <span class="seg-ind"></span>
+                <button type="button" data-value="A4" class="active">A4 <small>21 × 29.7 cm</small></button>
+                <button type="button" data-value="A3">A3 <small>29.7 × 42 cm</small></button>
             </div>
 
         </div>
+
+        <p class="c-hint" id="c-hint"></p>
+
+        <div class="c-grid" id="c-grid"></div>
+
+        <p class="c-note" id="c-note"></p>
 
     </section>
 

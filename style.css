@@ -381,57 +381,295 @@ button:hover::before,
 
 .commission h2{
     font-size:48px;
-    margin-bottom:60px;
+    margin-bottom:14px;
 }
 
-.pricing{
+.commission-sub{
+    max-width:620px;
+    margin:0 auto 44px;
+    color:var(--text-muted);
+    font-size:18px;
+    line-height:1.7;
+}
+
+/* --- toggle gaya & ukuran --- */
+.c-controls{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+.seg{
+    position:relative;
+    display:inline-flex;
+    padding:6px;
+    border-radius:999px;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--line);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+}
+
+.seg-ind{
+    position:absolute;
+    top:6px;
+    bottom:6px;
+    left:0;
+    width:0;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    box-shadow:0 8px 24px rgba(var(--glow),.45);
+    transition:transform .5s var(--ease), width .5s var(--ease);
+    z-index:0;
+}
+
+.seg button{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:12px 30px;
+    border-radius:999px;
+    background:transparent;
+    box-shadow:none;
+    color:var(--text-muted);
+    font-size:16px;
+    font-weight:600;
+    line-height:1.2;
+    overflow:visible;
+}
+.seg button::before{ display:none; }
+.seg button:hover{
+    transform:none;
+    box-shadow:none;
+    color:var(--text);
+}
+.seg button.active{ color:#fff; }
+.seg button small{
+    margin-top:3px;
+    font-size:11px;
+    font-weight:400;
+    opacity:.75;
+}
+
+.c-hint{
+    min-height:1.5em;
+    margin:20px 0 48px;
+    color:var(--text-muted);
+    font-size:15px;
+}
+
+/* --- kartu --- */
+.c-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:35px;
+    gap:32px;
+    max-width:1200px;
+    margin:0 auto;
+    text-align:left;
 }
 
-.price-card{
-    background:var(--surface);
-    padding:40px;
-    border-radius:25px;
+.c-card{
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    border-radius:26px;
+    background:linear-gradient(165deg,rgba(35,23,71,.82),rgba(20,12,40,.94));
     border:1px solid var(--line);
-    transition:transform .4s var(--ease), border-color .4s, box-shadow .4s;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    transition:transform .45s var(--ease), border-color .4s, box-shadow .45s;
 }
-.price-card:hover{
-    transform:translateY(-12px);
-    border-color:var(--accent);
-    box-shadow:0 25px 60px rgba(var(--glow),.3);
+.c-card.enter{ animation:cardIn .85s var(--ease) backwards; }
+.c-card:hover{
+    transform:translateY(-10px);
+    border-color:rgba(167,139,250,.55);
+    box-shadow:0 30px 70px rgba(var(--glow),.32);
 }
 
-.price-card h3{ font-size:24px; margin-bottom:20px; }
+@keyframes cardIn{
+    from{ opacity:0; transform:translateY(40px) scale(.97); }
+}
 
-.price-card h1{
-    font-size:52px;
+/* --- area foto --- */
+.c-photo{
+    position:relative;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    background:radial-gradient(circle at 30% 20%,#3b1d7a 0%,#1b0f3a 60%,#120a28 100%);
+}
+
+.c-photo img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    cursor:zoom-in;
+    opacity:0;
+    transform:scale(1.06);
+    transition:opacity .7s ease, transform .9s var(--ease);
+}
+.c-photo img.in{ opacity:1; transform:scale(1); }
+.c-card:hover .c-photo img.in{ transform:scale(1.06); }
+
+/* placeholder kalau foto belum ada */
+.c-ph{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
     color:var(--accent-2);
-    margin-bottom:30px;
+    background-image:radial-gradient(rgba(196,181,253,.14) 1px,transparent 1.6px);
+    background-size:22px 22px;
+    transition:opacity .5s;
+}
+.c-ph svg{ width:46px; height:46px; opacity:.85; }
+.c-ph span{
+    font-size:12px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--text-muted);
+}
+.c-photo:not(.has-photo)::after{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px dashed rgba(196,181,253,.25);
+    border-radius:18px;
+    pointer-events:none;
+}
+.c-photo.has-photo .c-ph{ opacity:0; }
+
+.c-badge{
+    position:absolute;
+    top:16px;
+    left:16px;
+    z-index:2;
+    padding:6px 14px;
+    border-radius:999px;
+    background:rgba(12,4,30,.65);
+    border:1px solid var(--line);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    color:var(--accent-2);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
-.price-card button{
-    --ink-color:#fff;
+/* --- isi kartu --- */
+.c-body{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    gap:18px;
+    padding:26px 26px 28px;
+}
+
+.c-head h3{
+    font-size:26px;
+    font-weight:600;
+}
+.c-head p{
+    margin-top:2px;
+    color:var(--text-muted);
+    font-size:14px;
+}
+
+/* pilihan Black & White / Coloring */
+.vt{
+    display:inline-flex;
+    align-self:flex-start;
+    padding:4px;
+    border-radius:999px;
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--line);
+}
+.vt button{
+    padding:8px 16px;
+    border-radius:999px;
     background:transparent;
-    border:1px solid var(--accent-2);
     box-shadow:none;
-    padding:12px 35px;
+    color:var(--text-muted);
+    font-size:13px;
+    font-weight:500;
+}
+.vt button::before{ display:none; }
+.vt button:hover{
+    transform:none;
+    box-shadow:none;
+    color:var(--text);
+}
+.vt button.active{
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    box-shadow:0 6px 18px rgba(var(--glow),.4);
+    color:#fff;
+}
+.vt.single span{
+    padding:8px 16px;
+    color:var(--accent-2);
+    font-size:13px;
+}
+
+/* harga Rupiah + Dollar */
+.c-price{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px 12px;
+    margin-top:auto;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+}
+.c-idr{
+    font-size:34px;
+    font-weight:700;
+    line-height:1.1;
+    background:linear-gradient(90deg,var(--accent-2),var(--accent));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+}
+.c-usd{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 12px;
+    border-radius:999px;
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    color:var(--accent-2);
+    font-size:14px;
+    font-weight:600;
+}
+.c-usd i{
+    font-style:normal;
+    font-weight:400;
+    color:var(--text-muted);
+}
+.c-price.swap .c-idr,
+.c-price.swap .c-usd{ animation:pricePop .5s var(--ease) backwards; }
+.c-price.swap .c-usd{ animation-delay:.06s; }
+
+@keyframes pricePop{
+    from{ opacity:0; transform:translateY(10px); }
+}
+
+.c-order{
+    width:100%;
+    padding:15px 30px;
     font-size:16px;
 }
-.price-card button:hover{
-    color:#1a0b3a;
-    transform:translateY(-4px);
-}
 
-.featured{
-    background:linear-gradient(160deg,var(--surface-2),var(--surface));
-    border:2px solid var(--accent);
-    transform:scale(1.05);
-    box-shadow:0 20px 60px rgba(var(--glow),.25);
-}
-.price-card.featured:hover{
-    transform:scale(1.05) translateY(-12px);
+.c-note{
+    margin-top:46px;
+    color:var(--text-muted);
+    font-size:13px;
 }
 
 /* =========================================================
@@ -813,13 +1051,35 @@ footer p{ color:var(--text-muted); }
     .portfolio h2, .commission h2, .contact h2{ font-size:36px; }
 
     .commission{ padding:80px 25px; }
-    .pricing{ grid-template-columns:1fr; }
-    .featured, .price-card.featured:hover{ transform:none; }
-    .price-card.featured:hover{ transform:translateY(-12px); }
+    .commission-sub{ font-size:16px; }
+    .c-controls{ flex-direction:column; align-items:center; gap:12px; }
+    .seg button{ padding:10px 22px; }
+    .c-idr{ font-size:30px; }
 
     footer{ padding:40px 20px; }
 
     #close{ top:20px; right:25px; }
+}
+
+@media (max-width:1000px){
+    .c-grid{
+        grid-template-columns:1fr;
+        max-width:440px;
+    }
+}
+
+/* HP kecil: logo dikecilkan, "Home" disembunyikan (logo = tombol Home) */
+@media (max-width:520px){
+    nav{ padding:12px 14px; }
+    .logo img{ height:26px; }
+    nav ul{ gap:11px; font-size:12.5px; }
+    nav ul li:first-child{ display:none; }
+}
+
+@media (max-width:340px){
+    nav{ padding:10px 12px; }
+    .logo img{ height:22px; }
+    nav ul{ gap:8px; font-size:12px; }
 }
 
 /* Hormati pengaturan "reduce motion" dari perangkat */
